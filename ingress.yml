@@ -18,7 +18,7 @@ spec:
                 port:
                   number: 3000
           
-          # 2. Routes the root path (/)
+          # 2. Routes the root path (/orders for 2nd application)
           - path: /orders
             pathType: Prefix
             backend:
