@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node-docker-app-deployment
+  labels:
+    app: node-docker
+spec:
+  selector:
+    matchLabels:
+      app: node-docker
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: node-docker
+    spec:
+      containers:
+      - name: node-docker-app-container
+        image: azhardanish9/node-docker-k8s:2.0
+        ports:
+        - containerPort: 3015
+        resources:
+          requests:
+            cpu: 200m
+          limits:
+            cpu: 500m

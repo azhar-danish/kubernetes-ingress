@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node-app-deployment
+  labels:
+    env: demo
+    type: backend
+spec:
+  selector:
+    matchLabels:
+      env: demo
+      type: backend
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        env: demo
+        type: backend
+    spec:
+      containers:
+      - name: node-app-container
+        image: azhardanish9/my-new-new-express-app:2.0
+        ports:
+        - containerPort: 3000
+        resources:
+          requests:
+            cpu: 200m
+          limits:
+            cpu: 500m

@@ -1,0 +1,30 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: my-express-app
+  namespace: node-app
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: my-express-app.local
+      http: 
+        paths:
+          # 1. Routes the root path (/)
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: node-app-deployment-svc
+                port:
+                  number: 3000
+          
+          # 2. Routes the root path (/)
+          - path: /orders
+            pathType: Prefix
+            backend:
+              service:
+                name: node-docker-app-svc
+                port:
+                  number: 3015
+
+          
