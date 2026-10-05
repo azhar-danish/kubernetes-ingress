@@ -169,3 +169,23 @@ kubectl apply -f ingress.yml
 127.0.0.1   my-express-app.local
 
 and save this file
+
+9) port-forwarding in kind Cluster
+
+    kubectl port-forward svc/ingress-nginx-controller -n ingress-nginx 8080:80
+
+10) on the browser first app url
+    http://my-express-app.local:8080/
+    Hello from Kubernetes! Response served by Pod: node-app-deployment-7c66f45555-dgpgf hello aman
+
+    http://my-express-app.local:8080/home
+    Welcom to home
+
+11) on the browser second app url
+    http://my-express-app.local:8080/orders
+    Welcom to orders api
+
+    http://my-express-app.local:8080/orders/about
+    This is orders / about page
+
+    
